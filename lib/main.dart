@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:togather_we/Screens/Login_page.dart';
+import 'package:togather_we/Screens/Splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home: const SplashScreen(),
     );
   }
 }
