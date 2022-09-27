@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:togather_we/Screens/Login_page.dart';
 import 'package:togather_we/Screens/Splash.dart';
 
 void main() {
