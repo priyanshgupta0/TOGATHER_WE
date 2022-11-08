@@ -39,6 +39,7 @@ dependencies:
   get: ^4.6.5
   dropdown_textfield: ^1.0.5
   dob_input_field: ^2.0.0
+  url_launcher: ^6.1.6
 
 dev_dependencies:
   flutter_test:

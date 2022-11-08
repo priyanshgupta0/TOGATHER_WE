@@ -2,7 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:togather_we/Screens/GeneralRoom.dart';
 import 'package:togather_we/Screens/Login_page.dart';
+import 'package:togather_we/Screens/StoryRoom.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+Future<void> _launchInBrowser(Uri url) async {
+  if (!await launchUrl(
+    url,
+    mode: LaunchMode.externalApplication,
+  )) {
+    throw 'Could not launch $url';
+  }
+}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,6 +26,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final Uri General_Room_one =
+        Uri(scheme: 'https', host: 'meet.google.com', path: 'mie-gsiu-rus');
+
+    final Uri General_Room_two =
+        Uri(scheme: 'https', host: 'meet.google.com', path: 'zwp-behn-csu');
+
+    final Uri Story_Room_one =
+        Uri(scheme: 'https', host: 'meet.google.com', path: 'kfo-mser-abm');
+
+    final Uri Story_Room_two =
+        Uri(scheme: 'https', host: 'meet.google.com', path: 'dyq-ewxv-xzg');
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.cyan,
@@ -48,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       children: [
                         Text(
-                          "Genral Room",
+                          "General Room",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
@@ -56,7 +80,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Spacer(),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const GeneralRoom()));
+                          },
                           child: Text(
                             "Show More >>",
                             style: TextStyle(
@@ -85,7 +114,168 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Spacer(),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  _launchInBrowser(General_Room_one);
+                                },
+                                child: Card(
+                                  color: Colors.lightGreen,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Join Now",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        elevation: 4,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Room 2",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Spacer(),
+                              InkWell(
+                                onTap: () {
+                                  _launchInBrowser(General_Room_two);
+                                },
+                                child: Card(
+                                  color: Colors.lightGreen,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Join Now",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10, bottom: 10),
+            child: Center(
+                child: Card(
+              elevation: 5,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Story Room",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        Spacer(),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const StoryRoom()));
+                          },
+                          child: Text(
+                            "Show More >>",
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        elevation: 4,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Room 1",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Spacer(),
+                              InkWell(
+                                onTap: () {
+                                  _launchInBrowser(Story_Room_one);
+                                },
+                                child: Card(
+                                  color: Colors.lightGreen,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Join Now",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        elevation: 4,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Room 2",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Spacer(),
+                              InkWell(
+                                onTap: () {
+                                  _launchInBrowser(Story_Room_two);
+                                },
                                 child: Card(
                                   color: Colors.lightGreen,
                                   child: Padding(
