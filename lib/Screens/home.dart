@@ -5,6 +5,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:togather_we/Screens/GeneralRoom.dart';
 import 'package:togather_we/Screens/Login_page.dart';
 import 'package:togather_we/Screens/StoryRoom.dart';
+import 'package:togather_we/Screens/userdaitales.dart';
+import 'package:togather_we/Screens/userdata.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> _launchInBrowser(Uri url) async {
@@ -24,6 +26,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<UserData> UserDatabase = [];
+
+  @override
+  void initState() {
+    super.initState();
+    UserDatabase = UserDetails().UserDetail;
+  }
+
   @override
   Widget build(BuildContext context) {
     final Uri General_Room_one =
@@ -308,11 +318,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
           // ignore: prefer_const_literals_to_create_immutables
           children: [
-            const UserAccountsDrawerHeader(
-              accountName: const Text("Priyansh Gupta"),
-              accountEmail: const Text("priyanshgupta20333@acropolis.in"),
-              currentAccountPicture: const CircleAvatar(
-                backgroundImage: const AssetImage("assets/Images/Priyansh.jpg"),
+            UserAccountsDrawerHeader(
+              accountName: Text(UserDatabase[globalvalue].Name),
+              accountEmail: Text(UserDatabase[globalvalue].Email),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage(UserDatabase[globalvalue].Photo),
               ),
             ),
             ListTile(

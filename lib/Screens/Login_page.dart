@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:togather_we/Screens/home.dart';
+import 'package:togather_we/Screens/logindata.dart';
 import 'package:togather_we/Screens/signup.dart';
+
+import 'Login_pass_user.dart';
+
+int globalvalue = 0;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,6 +18,15 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool eye = true;
+  String Password = '';
+  GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  List<LoginData> LoginDatabase = [];
+
+  @override
+  void initState() {
+    super.initState();
+    LoginDatabase = LoginDetails().LoginDetail;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,50 +48,84 @@ class _LoginPageState extends State<LoginPage> {
                 height: 200,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              child: Container(
-                padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Colors.black)),
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    labelText: "User Name",
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(left: 30, right: 30),
-              child: Container(
-                padding: EdgeInsets.fromLTRB(10, 2, 10, 2),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Colors.black)),
-                child: TextField(
-                  obscureText: eye,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  decoration: InputDecoration(
-                    suffixIcon: InkWell(
-                        onTap: () {
-                          setState(() {
-                            eye = !eye;
-                            print(eye);
-                          });
-                          // eye = !eye;
-                          // print(eye);
+            Form(
+                key: formkey,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30, right: 30),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5)),
+                            hintText: "Enter User Name",
+                            labelText: "User Name"),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Username cannot be empty";
+                          }
+                          for (int i = 0; i < LoginDatabase.length; i++) {
+                            if (LoginDatabase[i].userName == value) {
+                              globalvalue =  i;
+                              Password = LoginDatabase[i].password;
+                              return null;
+                            }
+                          }
                         },
-                        child: Icon(Icons.remove_red_eye)),
-                    border: InputBorder.none,
-                    labelText: "Password",
-                  ),
-                ),
-              ),
-            ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30, right: 30),
+                      child: TextFormField(
+                        obscureText: eye,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        decoration: InputDecoration(
+                            suffixIcon: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    eye = !eye;
+                                    print(eye);
+                                  });
+                                  // eye = !eye;
+                                  // print(eye);
+                                },
+                                child: Icon(Icons.remove_red_eye)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5)),
+                            hintText: "Enter Password",
+                            labelText: "Password"),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Password cannot be empty";
+                          } else if (value.length < 6) {
+                            return "Password length must be atleast 8";
+                          } else if (value == Password) {
+                            return null;
+                          } else {
+                            return "Incorect Password or Username";
+                          }
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 150, right: 150, top: 10, bottom: 10),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            if (formkey.currentState!.validate()) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()),
+                              );
+                            }
+                          },
+                          child: Text("Login")),
+                    ),
+                  ],
+                )),
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.end,
             //   children: [
@@ -94,16 +142,7 @@ class _LoginPageState extends State<LoginPage> {
             //     )
             //   ],
             // ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 150, right: 150, top: 10, bottom: 10),
-              child: ElevatedButton(onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                );
-              }, child: Text("Login")),
-            ),
+
             Padding(
               padding: const EdgeInsets.only(left: 30, right: 30),
               child: Row(
