@@ -21,16 +21,16 @@ class GeneralRoom extends StatefulWidget {
 
 class _GeneralRoomState extends State<GeneralRoom> {
   List<Uri> Room_link = [
-    Uri(scheme: 'https', host: 'meet.google.com', path: 'mie-gsiu-rus'),
-    Uri(scheme: 'https', host: 'meet.google.com', path: 'zwp-behn-csu'),
-    Uri(scheme: 'https', host: 'meet.google.com', path: 'cci-ehda-yux'),
-    Uri(scheme: 'https', host: 'meet.google.com', path: 'ptt-woof-wtm'),
-    Uri(scheme: 'https', host: 'meet.google.com', path: 'boz-fsnc-mnm'),
-    Uri(scheme: 'https', host: 'meet.google.com', path: 'nfb-dwwb-wkx'),
-    Uri(scheme: 'https', host: 'meet.google.com', path: 'phn-jodk-hie'),
-    Uri(scheme: 'https', host: 'meet.google.com', path: 'vjn-ihqz-bei'),
-    Uri(scheme: 'https', host: 'meet.google.com', path: 'ddy-zpec-nja'),
-    Uri(scheme: 'https', host: 'meet.google.com', path: 'qgb-efdf-zyw'),
+    Uri(scheme: 'https', host: 'meet.google.com', path: 'jmk-hajq-cfa'),
+    Uri(scheme: 'https', host: 'meet.google.com', path: 'msi-wvnc-fsp'),
+    Uri(scheme: 'https', host: 'meet.google.com', path: 'jnt-fcce-vyp'),
+    Uri(scheme: 'https', host: 'meet.google.com', path: 'uma-doyw-csh'),
+    Uri(scheme: 'https', host: 'meet.google.com', path: 'mqz-pryz-pgn'),
+    Uri(scheme: 'https', host: 'meet.google.com', path: 'qck-xzhy-qkz'),
+    Uri(scheme: 'https', host: 'meet.google.com', path: 'wwe-ffey-izo'),
+    Uri(scheme: 'https', host: 'meet.google.com', path: 'kyu-aewk-riv'),
+    Uri(scheme: 'https', host: 'meet.google.com', path: 'kov-jroy-are'),
+    Uri(scheme: 'https', host: 'meet.google.com', path: 'twx-bika-nyf'),
   ];
 
   List<String> Room_num = [

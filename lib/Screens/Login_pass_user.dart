@@ -5,5 +5,7 @@ class LoginDetails {
     LoginData(userName: 'Priyansh', password: 'bhaibhai'),
     LoginData(userName: 'Ranak', password: '12345678'),
     LoginData(userName: 'Krupi', password: 'acropolis'),
+    LoginData(userName: 'Prakhar', password: 'Prakhar@123'),
+    LoginData(userName: 'Prasang', password: 'Jain@123'),
   ];
 }
